@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  name: 'EditArticlePage',
+  name: 'EditorPage',
   layout: 'LayoutDefault',
 }
 </script>

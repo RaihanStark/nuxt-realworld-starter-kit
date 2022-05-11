@@ -8,7 +8,7 @@
           <NuxtLink to="/" class="nav-link">Home</NuxtLink>
         </li>
         <li class="nav-item">
-          <NuxtLink to="/edit_article" class="nav-link"
+          <NuxtLink to="/editor" class="nav-link"
             ><i class="ion-compose"></i>&nbsp;New Article</NuxtLink
           >
         </li>
@@ -28,4 +28,6 @@
   </nav>
 </template>
 
-<style scoped></style>
+<script>
+export default {}
+</script>
