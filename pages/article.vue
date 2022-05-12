@@ -38,9 +38,9 @@
 </template>
 
 <script>
-import CommentForm from '../layouts/CommentForm.vue'
-import CommentItem from '../layouts/CommentItem.vue'
-import ProfileItem from '../layouts/ProfileItem.vue'
+import CommentForm from '../components/CommentForm.vue'
+import CommentItem from '../components/CommentItem.vue'
+import ProfileItem from '../components/ProfileItem.vue'
 export default {
   name: 'ArticlePage',
   layout: 'LayoutDefault',

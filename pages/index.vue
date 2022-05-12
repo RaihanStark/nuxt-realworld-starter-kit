@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import FeedPreviewItem from '../layouts/FeedPreviewItem.vue'
-import TagsSection from '../layouts/TagsSection.vue'
-import FeedTabs from '../layouts/FeedTabs.vue'
-import BannerSection from '../layouts/BannerSection.vue'
+import FeedPreviewItem from '../components/FeedPreviewItem.vue'
+import TagsSection from '../components/TagsSection.vue'
+import FeedTabs from '../components/FeedTabs.vue'
+import BannerSection from '../components/BannerSection.vue'
 export default {
   name: 'IndexPage',
   layout: 'LayoutDefault',
