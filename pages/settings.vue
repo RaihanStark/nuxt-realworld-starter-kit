@@ -57,5 +57,6 @@
 export default {
   name: 'SettingsPage',
   layout: 'LayoutDefault',
+  middleware: 'auth',
 }
 </script>

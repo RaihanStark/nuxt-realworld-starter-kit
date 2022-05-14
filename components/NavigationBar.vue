@@ -7,12 +7,12 @@
           <!-- Add "active" class when you're on that page" -->
           <NuxtLink to="/" class="nav-link">Home</NuxtLink>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="this.$store.state.auth.isLoggedIn">
           <NuxtLink to="/editor" class="nav-link"
             ><i class="ion-compose"></i>&nbsp;New Article</NuxtLink
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="this.$store.state.auth.isLoggedIn">
           <NuxtLink to="/settings" class="nav-link"
             ><i class="ion-gear-a"></i>&nbsp;Settings</NuxtLink
           >

@@ -52,5 +52,6 @@
 export default {
   name: 'EditorPage',
   layout: 'LayoutDefault',
+  middleware: 'auth',
 }
 </script>
