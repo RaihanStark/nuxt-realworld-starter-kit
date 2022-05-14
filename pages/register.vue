@@ -9,7 +9,7 @@
           </p>
 
           <ul class="error-messages">
-            <li>That email is already taken</li>
+            <li v-for="error in errors" :key="error">{{ error }}</li>
           </ul>
 
           <form>
@@ -17,7 +17,9 @@
               <input
                 class="form-control form-control-lg"
                 type="text"
-                placeholder="Your Name"
+                placeholder="Your Username"
+                v-model="forms.username"
+                :disabled="isFetching"
               />
             </fieldset>
             <fieldset class="form-group">
@@ -25,6 +27,8 @@
                 class="form-control form-control-lg"
                 type="text"
                 placeholder="Email"
+                v-model="forms.email"
+                :disabled="isFetching"
               />
             </fieldset>
             <fieldset class="form-group">
@@ -32,9 +36,15 @@
                 class="form-control form-control-lg"
                 type="password"
                 placeholder="Password"
+                v-model="forms.password"
+                :disabled="isFetching"
               />
             </fieldset>
-            <button class="btn btn-lg btn-primary pull-xs-right">
+            <button
+              @click.prevent="registerHandler"
+              :disabled="isFetching"
+              class="btn btn-lg btn-primary pull-xs-right"
+            >
               Sign up
             </button>
           </form>
@@ -48,5 +58,47 @@
 export default {
   name: 'RegisterPage',
   layout: 'LayoutDefault',
+  data() {
+    return {
+      forms: {
+        username: '',
+        email: '',
+        password: '',
+      },
+      errors: [],
+      isFetching: false,
+    }
+  },
+  methods: {
+    async registerHandler(e) {
+      this.isFetching = true
+      const data = {
+        user: {
+          username: this.forms.username,
+          email: this.forms.email,
+          password: this.forms.password,
+        },
+      }
+
+      const res = await this.$axios
+        .$post('https://api.realworld.io/api/users', data)
+        .catch((error) => {
+          this.errors = []
+          for (const property in error.response.data.errors) {
+            this.errors.push(
+              `${property} ${error.response.data.errors[property]}`
+            )
+          }
+        })
+
+      // If success
+      if (res) {
+        console.log('loggedIn', res)
+        this.$store.commit('auth/LOGIN', res.user.token)
+        this.$router.push('/')
+      }
+      this.isFetching = false
+    },
+  },
 }
 </script>

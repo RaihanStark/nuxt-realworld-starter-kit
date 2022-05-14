@@ -17,10 +17,13 @@
             ><i class="ion-gear-a"></i>&nbsp;Settings</NuxtLink
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="this.$store.state.auth.isLoggedIn">
+          <NuxtLink to="/logout" class="nav-link">Sign out</NuxtLink>
+        </li>
+        <li class="nav-item" v-if="!this.$store.state.auth.isLoggedIn">
           <NuxtLink to="/login" class="nav-link">Sign in</NuxtLink>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="!this.$store.state.auth.isLoggedIn">
           <NuxtLink to="/register" class="nav-link">Sign up</NuxtLink>
         </li>
       </ul>
